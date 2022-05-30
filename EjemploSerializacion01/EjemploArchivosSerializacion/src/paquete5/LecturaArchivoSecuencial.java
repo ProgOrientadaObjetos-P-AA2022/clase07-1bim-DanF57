@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package paquete5;
 
 import java.io.EOFException;
@@ -18,10 +14,14 @@ import paquete5.Hospital;
  * @author SALA I
  */
 public class LecturaArchivoSecuencial {
+
     private ObjectInputStream entrada;
     private ArrayList<Hospital> hospitales;
     private String nombreArchivo;
-    
+    //
+    private String identificador;
+    private Hospital hospitalBuscado;
+
     public LecturaArchivoSecuencial(String n) {
         nombreArchivo = n;
         File f = new File(obtenerNombreArchivo());
@@ -37,12 +37,12 @@ public class LecturaArchivoSecuencial {
             } // fin de catch
         }
     }
-    
-        public void establecerHospitales() {
+
+    public void establecerHospitales() {
         // 
         hospitales = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
-        
+
         if (f.exists()) {
             while (true) {
                 try {
@@ -64,20 +64,63 @@ public class LecturaArchivoSecuencial {
             }
         }
     }
-    
+
     public void establecerNombreArchivo(String n) {
         nombreArchivo = n;
     }
-    
+
+    public void establecerIdentificador(String n) {
+        identificador = n;
+    }
+
+    public void establecerHospitalBuscado() {
+        // 
+
+        File f = new File(obtenerNombreArchivo());
+        if (f.exists()) {
+
+            while (true) {
+                try {
+                    Hospital registro = (Hospital) entrada.readObject();
+
+                    if (registro.obtenerNombre().equals(identificador)) {
+                        hospitalBuscado = registro;
+                        break;
+                    }
+
+                } catch (EOFException endOfFileException) {
+                    return; // se llegó al fin del archivo
+                    // se puede usar el break;
+                    // System.err.println("Fin de archivo: " + endOfFileException);
+
+                } catch (IOException ex) {
+                    System.err.println("Error al leer el archivo: " + ex);
+                } catch (ClassNotFoundException ex) {
+                    System.err.println("No se pudo crear el objeto: " + ex);
+                } catch (Exception ex) {
+                    System.err.println("No hay datos en el archivo: " + ex);
+
+                }
+            }
+        }
+    }
+
     public ArrayList<Hospital> obtenerHospitales() {
         return hospitales;
     }
-    
-    
-    public String obtenerNombreArchivo(){
+
+    public String obtenerNombreArchivo() {
         return nombreArchivo;
     }
-    
+
+    public Hospital obtenerProfesorBuscado() {
+        return hospitalBuscado;
+    }
+
+    public String obtenerIdentificador() {
+        return identificador;
+    }
+
     @Override
     public String toString() {
         String cadena = "Lista de Hospitales\n";
@@ -108,4 +151,3 @@ public class LecturaArchivoSecuencial {
         } // fin de catch
     } // fin del método cerrarArchivo
 }
-   
