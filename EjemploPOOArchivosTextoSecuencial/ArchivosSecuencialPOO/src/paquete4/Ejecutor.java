@@ -21,7 +21,8 @@ public class Ejecutor {
         // establecer el valor del atributo registro
         escritura.establecerRegistro(c1);
         // estabalecer en el archivo el atributo del registro
-        escritura.establecerSalida(); 
+        escritura.establecerSalida();
+        
         
         // proceso para lectura del archivo
         ArchivoLectura lectura = new ArchivoLectura(nombreArchivo);
@@ -29,5 +30,6 @@ public class Ejecutor {
         // System.out.println(lectura.toString());
         System.out.println(lectura);
         lectura.cerrarArchivo();
+        
     }
 }

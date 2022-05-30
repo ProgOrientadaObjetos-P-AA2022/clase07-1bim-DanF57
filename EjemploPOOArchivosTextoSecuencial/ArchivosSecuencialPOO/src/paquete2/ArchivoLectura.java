@@ -24,7 +24,7 @@ public class ArchivoLectura {
         nombreArchivo = n;
         rutaArchivo = String.format("data/%s", nombreArchivo);
         // data/profesores.txt
-        
+
         File f = new File(rutaArchivo); // data/profesores.txt
         if (f.exists()) {
             try {
@@ -45,7 +45,7 @@ public class ArchivoLectura {
 
     public void establecerRutaArchivo() {
         rutaArchivo = String.format("data/%s.txt",
-                obtenerNombreArchivo());;
+                obtenerNombreArchivo());
     }
 
     public String obtenerNombreArchivo() {
@@ -91,6 +91,10 @@ public class ArchivoLectura {
 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String toString() {
         String cadena = "Lista Profesores\n";

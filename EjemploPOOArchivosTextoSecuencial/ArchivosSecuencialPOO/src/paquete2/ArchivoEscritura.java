@@ -33,7 +33,7 @@ public class ArchivoEscritura {
 
     public void establecerRutaArchivo() {
         rutaArchivo = String.format("data/%s.txt",
-                obtenerNombreArchivo());;
+                obtenerNombreArchivo());
     }
 
     public void establecerRegistro(Profesor n) {
@@ -58,7 +58,7 @@ public class ArchivoEscritura {
             salidaArchivo = new Formatter(new FileWriter(rutaArchivo, true));
             Profesor p = obtenerRegistro();
             
-            String cadenaRegistro = String.format("%s;%s",
+            String cadenaRegistro = String.format("%s|%s",
                     p.obtenerNombre(), p.obtenerTipo());
             
             salidaArchivo.format("%s\n", cadenaRegistro);
