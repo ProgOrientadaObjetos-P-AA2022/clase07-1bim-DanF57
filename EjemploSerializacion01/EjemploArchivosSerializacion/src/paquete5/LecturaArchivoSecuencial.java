@@ -113,7 +113,7 @@ public class LecturaArchivoSecuencial {
         return nombreArchivo;
     }
 
-    public Hospital obtenerProfesorBuscado() {
+    public Hospital obtenerHospitalBuscado() {
         return hospitalBuscado;
     }
 

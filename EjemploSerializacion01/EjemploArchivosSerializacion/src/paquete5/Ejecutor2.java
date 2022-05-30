@@ -13,12 +13,12 @@ public class Ejecutor2 {
         // nombre del archivo
         String nombreArchivo = "hospitales.data";
         String nombre_buscar = "UTPL";
-        Hospital hospital_buscar;
+        String hospital_buscar;
         LecturaArchivoSecuencial lectura = 
                 new LecturaArchivoSecuencial(nombreArchivo);
         lectura.establecerIdentificador(nombre_buscar);
         lectura.establecerHospitalBuscado();
-        hospital_buscar = lectura.obtenerProfesorBuscado();
+        hospital_buscar = lectura.obtenerHospitalBuscado().obtenerNombre();
         if(hospital_buscar!=null){
             System.out.println(hospital_buscar);
         }else{
